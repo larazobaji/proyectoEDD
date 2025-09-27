@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ebox</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="light-theme">
+
+    <div class="container">
+        <header>
+            <div class="logo">Ebox</div>
+            <div class="theme-switcher-wrapper">
+                <label class="theme-switcher">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </header>
+
+        <aside class="sidebar">
+            <nav>
+                <ul id="folder-list">
+                    <li class="active"><span class="material-icons">inbox</span> Buzón de entrada</li>
+                    <li><span class="material-icons">star_border</span> Destacado</li>
+                    <li><span class="material-icons">report_gmailerrorred</span> Spam</li>
+                </ul>
+            </nav>
+            <div class="add-folder">
+                <button id="add-folder-btn"><span class="material-icons">create_new_folder</span> Agregar nueva carpeta</button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="toolbar">
+                <span class="main-title">Principal</span>
+                <div class="actions">
+                    <button title="Refrescar"><span class="material-icons">refresh</span></button>
+                    <button title="Seleccionar"><span class="material-icons">check_box_outline_blank</span></button>
+                    <button title="Borrar"><span class="material-icons">delete</span></button>
+                </div>
+            </div>
+            <div class="email-list">
+                <div class="email-item">
+                    <div class="email-sender"><span>Usuario Ejemplo</span></div>
+                    <div class="email-subject"><span>Asunto del Correo</span> - Este es un ejemplo del cuerpo del correo...</div>
+                    <div class="email-date"><span>27 sep</span></div>
+                </div>
+                <div class="email-item">
+                    <div class="email-sender"><span>Otro Usuario</span></div>
+                    <div class="email-subject"><span>Reunión de Equipo</span> - Recordatorio sobre la reunión de mañana.</div>
+                    <div class="email-date"><span>26 sep</span></div>
+                </div>
+            </div>
+        </main>
+
+        <button class="compose-btn" id="compose-btn">
+            <span class="material-icons">edit</span> Redactar
+        </button>
+
+        <div class="compose-modal" id="compose-modal">
+            <div class="compose-header">
+                <span>Correo nuevo</span>
+                <div class="compose-actions">
+                    <button id="minimize-btn" title="Minimizar"><span class="material-icons">minimize</span></button>
+                    <button id="maximize-btn" title="Maximizar"><span class="material-icons">open_in_full</span></button>
+                    <button id="close-btn" title="Cerrar"><span class="material-icons">close</span></button>
+                </div>
+            </div>
+            <div class="compose-body">
+                <input type="email" placeholder="Para:">
+                <input type="text" placeholder="Asunto:">
+                <textarea class="email-body" placeholder="Escribe tu mensaje..."></textarea>
+            </div>
+            <div class="compose-footer">
+                <button class="send-btn">Enviar</button>
+                <button title="Adjuntar archivo"><span class="material-icons">attach_file</span></button>
+                <button title="Borrar borrador"><span class="material-icons">delete_outline</span></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
