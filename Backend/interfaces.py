@@ -1,6 +1,7 @@
 from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import List
+from objetos import Mensaje
 
 class IEnviador(ABC):
     @abstractmethod
@@ -14,5 +15,5 @@ class IRecibidor(ABC):
 
 class IListador(ABC):
     @abstractmethod
-    def listar_mensajes(self) -> List[Mensaje]:
+    def listar_bandeja_entrada(self):
         pass
