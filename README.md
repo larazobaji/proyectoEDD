@@ -15,4 +15,4 @@
 Para iniciar la simulación del cliente de correo:
 
 1.  Clonar este repositorio.
-2.  Ejecutar el archivo principal: `python main.py`
+2.  Ejecutar el archivo principal: `main.py`
