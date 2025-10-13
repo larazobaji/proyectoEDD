@@ -12,11 +12,11 @@ El desarrollo se enfoca en la aplicación eficiente de las estructuras de datos 
 
 ## Estructuras de Datos Clave Implementadas
 
-| Estructura | Aplicación en el Proyecto | Función Principal |
-| :--- | :--- | :--- |
-| **Árbol General (Recursividad)** | Estructura principal para modelar la jerarquía de carpetas y subcarpetas (`Carpeta`). | Permite la organización jerárquica y soporta búsquedas recursivas en todo el sistema de carpetas. |
-| **Diccionarios** | Utilizados para el registro de usuarios en el servidor y la gestión interna de subcarpetas por nombre. | Facilita el acceso y la gestión de elementos clave en tiempo $O(1)$. |
-| **Cola de Prioridades (Heapq)** | Implementada para gestionar los mensajes en espera, priorizando el envío de los correos marcados como "urgentes". | Asegura que los mensajes críticos sean procesados de forma eficiente y prioritaria. |
+| Estructura | Aplicación en el Proyecto |
+| :--- | :--- |
+| **Árbol General (Recursividad)** | Estructura principal para modelar la jerarquía de carpetas y subcarpetas (`Carpeta`). | 
+| **Diccionarios** | Utilizados para el registro de usuarios en el servidor y la gestión interna de subcarpetas por nombre. |
+| **Cola de Prioridades (Heapq)** | Implementada para gestionar los mensajes en espera, priorizando el envío de los correos marcados como "urgentes". |
 
 
 ## Enlaces Importantes
