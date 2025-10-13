@@ -7,8 +7,8 @@
 * **Año:** 2025
 
 ## Enlaces
-* **Tablero Trello (Gestión del Proyecto):** [https://trello.com/invite/b/68cafb440dcbdc871467b878/ATTIdafaac1d4c090cb93c3ee9d132bfffa291D3726B/estructura-de-datos-tp]
-* **Repositorio GitHub:** [(https://github.com/larazobaji/proyectoEDD/tree/main)]
+* **Tablero Trello (Gestión del Proyecto):** https://trello.com/invite/b/68cafb440dcbdc871467b878/ATTIdafaac1d4c090cb93c3ee9d132bfffa291D3726B/estructura-de-datos-tp
+* **Repositorio GitHub:** https://github.com/larazobaji/proyectoEDD/tree/main
 
 ## Instrucciones de Ejecución
 
