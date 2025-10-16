@@ -56,7 +56,9 @@ if __name__ == "__main__":
                 print("\n--- Menú de Opciones ---")
                 print("1. Enviar un correo")
                 print("2. Revisar bandeja de entrada")
-                print("3. Cerrar sesión")
+                print("3. Mover un mensaje")
+                print("4. Buscar mensaje (Recursivo)")
+                print("5. Cerrar sesión")
                 
                 opcion = input("Ingrese el número de la opción que desea: ")
                 
@@ -76,7 +78,7 @@ if __name__ == "__main__":
                     mensaje_enviado = usuario_encontrado.enviar_mensaje(destinatario, asunto, cuerpo)
                     
                     es_urgente = input("¿El mensaje es urgente? (si/no): ").lower() == "si"
-                    if es_urgente:
+                     if es_urgente:
                         mensaje_enviado.marcar_como_urgente()
                     
                     servidor.encolar_mensaje(mensaje_enviado)
@@ -86,10 +88,16 @@ if __name__ == "__main__":
                     usuario_encontrado.listar_bandeja_entrada()
                     
                 elif opcion == "3":
+                    self_mover_mensaje(usuario_encontrado)
+                    
+                elif opcion == "4":
+                    self_buscar_mensaje(usuario_encontrado)
+
+                elif opcion == "5":
                     print("¡Sesión cerrada!")
                     break
                 else:
-                    print(" Opción no válida. Por favor, ingrese un número del 1 al 3.")
+                    print(" Opción no válida. Por favor, ingrese un número del 1 al 5.")
             
             break
         else:
@@ -99,3 +107,46 @@ if __name__ == "__main__":
             else:
                 print("\nError: Contraseña incorrecta. Ha excedido el número de intentos.")
                 break
+
+def self_mover_mensaje(usuario: Usuario):
+    """Permite al usuario seleccionar un mensaje para mover."""
+    
+    usuario.listar_bandeja_entrada()
+    mensajes = usuario._Usuario__bandeja_entrada.listar_mensajes()
+    
+    if not mensajes:
+        print("No hay mensajes en la Bandeja de Entrada para mover.")
+        return
+
+    try:
+        idx = int(input("Ingrese el NÚMERO del mensaje que desea mover: ")) - 1
+        
+        if 0 <= idx < len(mensajes):
+            mensaje_a_mover = mensajes[idx]
+            
+            origen = "Bandeja de Entrada" 
+            
+            destino = input("Ingrese el NOMBRE de la carpeta de destino ('Bandeja de Salida' o nombre de carpeta personalizada): ")
+            
+            usuario.mover_mensaje(mensaje_a_mover, origen, destino)
+        else:
+            print("Número de mensaje inválido.")
+            
+    except ValueError:
+        print("Entrada inválida. Debe ingresar un número.")
+
+def self_buscar_mensaje(usuario: Usuario):
+    """Permite al usuario realizar una búsqueda recursiva."""
+    print("\n--- Búsqueda Recursiva ---")
+    criterio = input("Ingrese el asunto o remitente a buscar: ")
+    
+    bandeja_entrada = usuario._Usuario__bandeja_entrada 
+    
+    mensajes_encontrados = bandeja_entrada.buscar_mensaje(criterio)
+    
+    if mensajes_encontrados:
+        print("\n Mensajes Encontrados")
+        for i, mensaje in enumerate(mensajes_encontrados, 1):
+            print(f"{i}. {mensaje}")
+    else:
+        print("\n No se encontraron mensajes con ese criterio.")
