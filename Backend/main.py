@@ -26,8 +26,7 @@ if __name__ == "__main__":
                 print(" Mail incorrecto. Debe tener un solo '@' y ningún espacio. Intente de nuevo.")
         
         contraseña = input("Ingrese una contraseña: ")
-        
-        usuario = Usuario(nombre, email, id_usuario, "mi-empresa.com", "ServidorPrincipal", contraseña)
+        usuario = Usuario(nombre, email, id_usuario, servidor.dominio, servidor.nombre_servidor, contraseña)
         servidor.registrar_usuario(usuario)
         return usuario
     
@@ -39,6 +38,7 @@ if __name__ == "__main__":
     usuario_encontrado = None
     while usuario_encontrado is None:
         email_ingresado = input("Ingrese su email para iniciar sesión: ")
+        
         for user in servidor.obtener_usuarios():
             if user.obtener_email() == email_ingresado:
                 usuario_encontrado = user
@@ -78,7 +78,7 @@ if __name__ == "__main__":
                     mensaje_enviado = usuario_encontrado.enviar_mensaje(destinatario, asunto, cuerpo)
                     
                     es_urgente = input("¿El mensaje es urgente? (si/no): ").lower() == "si"
-                     if es_urgente:
+                    if es_urgente:
                         mensaje_enviado.marcar_como_urgente()
                     
                     servidor.encolar_mensaje(mensaje_enviado)
@@ -107,6 +107,7 @@ if __name__ == "__main__":
             else:
                 print("\nError: Contraseña incorrecta. Ha excedido el número de intentos.")
                 break
+
 
 def self_mover_mensaje(usuario: Usuario):
     """Permite al usuario seleccionar un mensaje para mover."""
@@ -145,7 +146,7 @@ def self_buscar_mensaje(usuario: Usuario):
     mensajes_encontrados = bandeja_entrada.buscar_mensaje(criterio)
     
     if mensajes_encontrados:
-        print("\n Mensajes Encontrados")
+        print("\n Mensajes Encontrados (Incluye subcarpetas):")
         for i, mensaje in enumerate(mensajes_encontrados, 1):
             print(f"{i}. {mensaje}")
     else:
