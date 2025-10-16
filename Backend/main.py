@@ -26,8 +26,7 @@ if __name__ == "__main__":
                 print(" Mail incorrecto. Debe tener un solo '@' y ningún espacio. Intente de nuevo.")
         
         contraseña = input("Ingrese una contraseña: ")
-        
-        usuario = Usuario(nombre, email, id_usuario, contraseña)
+        usuario = Usuario(nombre, email, id_usuario, servidor.dominio, servidor.nombre_servidor, contraseña)
         servidor.registrar_usuario(usuario)
         return usuario
     
@@ -39,8 +38,9 @@ if __name__ == "__main__":
     usuario_encontrado = None
     while usuario_encontrado is None:
         email_ingresado = input("Ingrese su email para iniciar sesión: ")
-        for user in servidor.usuarios:
-            if user.email == email_ingresado:
+        
+        for user in servidor.obtener_usuarios():
+            if user.obtener_email() == email_ingresado:
                 usuario_encontrado = user
                 break
         if usuario_encontrado is None:
@@ -56,8 +56,8 @@ if __name__ == "__main__":
                 print("\n--- Menú de Opciones ---")
                 print("1. Enviar un correo")
                 print("2. Revisar bandeja de entrada")
-                print("3. Crear nueva carpeta o subcarpeta")
-                print("4. Buscar mensajes (recursivo)")
+                print("3. Mover un mensaje")
+                print("4. Buscar mensaje (Recursivo)")
                 print("5. Cerrar sesión")
                 
                 opcion = input("Ingrese el número de la opción que desea: ")
@@ -68,7 +68,7 @@ if __name__ == "__main__":
                     destinatario_valido = False
                     while not destinatario_valido:
                         destinatario = input("Ingrese el email del destinatario: ")
-                        destinatario_valido = any(user.email == destinatario for user in servidor.usuarios)
+                        destinatario_valido = any(user.obtener_email() == destinatario for user in servidor.obtener_usuarios())
                         if not destinatario_valido:
                             print(" Error: Destinatario no encontrado en el servidor. Intente de nuevo.")
                     
@@ -88,26 +88,10 @@ if __name__ == "__main__":
                     usuario_encontrado.listar_bandeja_entrada()
                     
                 elif opcion == "3":
-                    print("\n--- Crear Carpeta ---")
-                    nombre = input("Ingrese el nombre de la nueva carpeta/subcarpeta: ")
-                    padre = input("Ingrese el nombre de la carpeta padre (deje vacío para carpeta raíz): ")
-                    usuario_encontrado.crear_carpeta(nombre, padre.strip() if padre.strip() else None)
-                    print(f"Carpeta/subcarpeta {nombre} creada.")
-                
+                    self_mover_mensaje(usuario_encontrado)
+                    
                 elif opcion == "4":
-                    print("\n--- Búsqueda Recursiva ---")
-                    criterio = input("Buscar por (asunto/remitente): ").lower()
-                    if criterio not in ["asunto", "remitente"]:
-                        print("Criterio inválido.")
-                        continue
-                    
-                    valor = input(f"Ingrese valor a buscar en {criterio}: ")
-                    
-                    resultados = usuario_encontrado.buscar_mensaje_recursivo(criterio, valor)
-                    
-                    print(f"\nResultados encontrados: {len(resultados)}")
-                    for i, msg in enumerate(resultados, 1):
-                        print(f"{i}. De: {msg.remitente}, Asunto: {msg.asunto}")
+                    self_buscar_mensaje(usuario_encontrado)
 
                 elif opcion == "5":
                     print("¡Sesión cerrada!")
@@ -123,3 +107,47 @@ if __name__ == "__main__":
             else:
                 print("\nError: Contraseña incorrecta. Ha excedido el número de intentos.")
                 break
+
+
+def self_mover_mensaje(usuario: Usuario):
+    """Permite al usuario seleccionar un mensaje para mover."""
+    
+    usuario.listar_bandeja_entrada()
+    mensajes = usuario._Usuario__bandeja_entrada.listar_mensajes()
+    
+    if not mensajes:
+        print("No hay mensajes en la Bandeja de Entrada para mover.")
+        return
+
+    try:
+        idx = int(input("Ingrese el NÚMERO del mensaje que desea mover: ")) - 1
+        
+        if 0 <= idx < len(mensajes):
+            mensaje_a_mover = mensajes[idx]
+            
+            origen = "Bandeja de Entrada" 
+            
+            destino = input("Ingrese el NOMBRE de la carpeta de destino ('Bandeja de Salida' o nombre de carpeta personalizada): ")
+            
+            usuario.mover_mensaje(mensaje_a_mover, origen, destino)
+        else:
+            print("Número de mensaje inválido.")
+            
+    except ValueError:
+        print("Entrada inválida. Debe ingresar un número.")
+
+def self_buscar_mensaje(usuario: Usuario):
+    """Permite al usuario realizar una búsqueda recursiva."""
+    print("\n--- Búsqueda Recursiva ---")
+    criterio = input("Ingrese el asunto o remitente a buscar: ")
+    
+    bandeja_entrada = usuario._Usuario__bandeja_entrada 
+    
+    mensajes_encontrados = bandeja_entrada.buscar_mensaje(criterio)
+    
+    if mensajes_encontrados:
+        print("\n Mensajes Encontrados (Incluye subcarpetas):")
+        for i, mensaje in enumerate(mensajes_encontrados, 1):
+            print(f"{i}. {mensaje}")
+    else:
+        print("\n No se encontraron mensajes con ese criterio.")
