@@ -6,17 +6,18 @@
 * **Comisión:** 2
 
 ## Resumen del Proyecto:
-El objetivo principal es diseñar e implementar un sistema de cliente de correo electrónico orientado a objetos utilizando Python. El sistema modela la gestión de usuarios, el flujo de mensajes entre servidores, y la organización jerárquica de correos.
+El objetivo principal de este proyecto es diseñar e implementar un sistema de cliente de correo electrónico orientado a objetos en Python.
+La idea es simular cómo funcionan los usuarios, el intercambio de mensajes entre servidores y la organización de los correos dentro de carpetas y subcarpetas.
 
-El desarrollo se enfoca en la aplicación eficiente de las estructuras de datos avanzadas y el **encapsulamiento**.
+El desarrollo se centra en aplicar de manera práctica el encapsulamiento y en aprovechar estructuras de datos avanzadas para lograr un sistema ordenado, eficiente y fácil de mantener.
 
 ## Estructuras de Datos Clave Implementadas
 
 | Estructura | Aplicación en el Proyecto |
 | :--- | :--- |
-| **Árbol General (Recursividad)** | Estructura principal para modelar la jerarquía de carpetas y subcarpetas (`Carpeta`). | 
-| **Diccionarios** | Utilizados para el registro de usuarios en el servidor y la gestión interna de subcarpetas por nombre. |
-| **Cola de Prioridades (Heapq)** | Implementada para gestionar los mensajes en espera, priorizando el envío de los correos marcados como "urgentes". |
+| **Árbol General (Recursividad)** | Se usa para representar la jerarquía de carpetas y subcarpetas del correo. Cada carpeta puede contener tanto mensajes como otras carpetas internas. | 
+| **Diccionarios** | Sirven para registrar a los usuarios dentro del servidor y para organizar las subcarpetas por nombre dentro de cada carpeta. |
+| **Cola de Prioridades (Heapq)** | Permite manejar los mensajes en espera, dando prioridad a los que fueron marcados como “urgentes” antes de enviarlos. |
 
 
 ## Enlaces Importantes
