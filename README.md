@@ -11,13 +11,13 @@ La idea es simular cómo funcionan los usuarios, el intercambio de mensajes entr
 
 El desarrollo se centra en aplicar de manera práctica el encapsulamiento y en aprovechar estructuras de datos avanzadas para lograr un sistema ordenado, eficiente y fácil de mantener.
 
-## Estructuras de Datos Clave Implementadas
+## Estructuras de Datos:
 
 | Estructura | Aplicación en el Proyecto |
 | :--- | :--- |
-| **Árbol General (Recursividad)** | Se usa para representar la jerarquía de carpetas y subcarpetas del correo. Cada carpeta puede contener tanto mensajes como otras carpetas internas. | 
+| **Árbol (Recursividad)** | Se usa para representar la jerarquía de carpetas y subcarpetas del correo. Cada carpeta puede contener tanto mensajes como otras carpetas internas. | 
 | **Diccionarios** | Sirven para registrar a los usuarios dentro del servidor y para organizar las subcarpetas por nombre dentro de cada carpeta. |
-| **Cola de Prioridades (Heapq)** | Permite manejar los mensajes en espera, dando prioridad a los que fueron marcados como “urgentes” antes de enviarlos. |
+| **Cola de Prioridades** | Permite manejar los mensajes en espera, dando prioridad a los que fueron marcados como “urgentes” antes de enviarlos. |
 
 
 ## Enlaces Importantes
