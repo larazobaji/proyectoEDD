@@ -90,3 +90,29 @@ class Usuario(ServidorCorreo, IEnviador, IRecibidor):
         
     def iniciar_sesion(self, contraseña_ingresada: str) -> bool:
         return self.__contraseña == contraseña_ingresada
+        
+    def __obtener_carpeta(self, nombre: str) -> Optional[Carpeta]:
+        """Método privado para encontrar una carpeta por su nombre (en el primer nivel)."""
+        if nombre.lower() == "bandeja de entrada":
+            return self.__bandeja_entrada
+        if nombre.lower() == "bandeja de salida":
+            return self.__bandeja_salida
+        for carpeta in self.__carpetas_personalizadas:
+            if carpeta.obtener_nombre().lower() == nombre.lower():
+                return carpeta
+        return None
+
+    def mover_mensaje(self, mensaje: Mensaje, origen_nombre: str, destino_nombre: str):
+        """Mueve un mensaje de una carpeta a otra (requisito de la Entrega 2)."""
+        origen = self.__obtener_carpeta(origen_nombre)
+        destino = self.__obtener_carpeta(destino_nombre)
+
+        if origen and destino:
+            # Llama al método de Carpeta para eliminar y agregar
+            if origen.eliminar_mensaje(mensaje):
+                destino.agregar_mensaje(mensaje)
+                print(f"[{self.obtener_email()}] Mensaje movido de '{origen_nombre}' a '{destino_nombre}'.")
+                return True
+        
+        print(f" Error: No se pudo mover el mensaje. Origen o Destino no válido.")
+        return False
