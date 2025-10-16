@@ -21,7 +21,7 @@ El desarrollo se centra en aplicar de manera práctica el encapsulamiento y en a
 
 
 ## Enlaces Importantes
-* **Tablero Trello (Gestión del Proyecto):** https://trello.com/invite/b/68cafb440dcbdc871467b878/ATTIdafaac1d4c090cb93c3ee9d132bfffa291D3726B/estructura-de-datos-tp
+* **Tablero Trello (Gestión del Proyecto):** https://trello.com/b/UAu9U4Hi
 * **Repositorio GitHub:** https://github.com/larazobaji/proyectoEDD
 
 ## Uso e Inicio
