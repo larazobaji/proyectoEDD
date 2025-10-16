@@ -15,5 +15,5 @@ class IRecibidor(ABC):
 
 class IListador(ABC):
     @abstractmethod
-    def listar_bandeja_entrada(self):
+    def listar_mensajes(self) -> List[Mensaje]:
         pass
