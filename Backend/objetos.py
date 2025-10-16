@@ -63,3 +63,24 @@ class Carpeta:
         
     def listar_mensajes(self) -> List[Mensaje]:
         return self.__mensajes
+        
+    #Busca y elimina un mensaje de la carpeta actual    
+    def eliminar_mensaje(self, mensaje: Mensaje) -> bool:
+        if mensaje in self.__mensajes:
+            self.__mensajes.remove(mensaje)
+            return True
+        return False
+    #Permite añadir una subcarpeta   
+    def agregar_subcarpeta(self, carpeta: Carpeta):
+        self.__subcarpetas.append(carpeta)
+    #Busca mensajes por asunto o remitente de forma recursiva   
+    def buscar_mensaje(self, criterio: str) -> List[Mensaje]:
+        criterio_lower = criterio.lower()
+        mensajes_encontrados = []
+        for mensaje in self.__mensajes:
+            if criterio_lower in mensaje.obtener_asunto().lower() or \
+               criterio_lower in mensaje.obtener_remitente().lower():
+                mensajes_encontrados.append(mensaje)
+        for subcarpeta in self.__subcarpetas:
+            mensajes_encontrados.extend(subcarpeta.buscar_mensaje(criterio))
+        return mensajes_encontrados    
