@@ -122,9 +122,9 @@ if __name__ == "__main__":
     while intentos < 3:
         contraseña = input("Ingrese su contraseña: ")
         if usuario_encontrado.iniciar_sesion(contraseña):
-            print("\n--- Sesión iniciada ---")
+            print("\n    Sesión iniciada    ")
             while True:
-                print("\n--- Menú ---")
+                print("\n    Menú    ")
                 print("1. Enviar correo (BFS)")
                 print("2. Enviar correo (DFS)")
                 print("3. Revisar bandeja de entrada")
@@ -172,4 +172,5 @@ if __name__ == "__main__":
             print("Contraseña incorrecta.")
             if intentos == 3:
                 print("Demasiados intentos fallidos.")
+
 
