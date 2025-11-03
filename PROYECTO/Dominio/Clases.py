@@ -33,7 +33,7 @@ class ServidorCorreo:
     def procesar_mensajes(self):
         print(f"\n[Servidor {self._nombre_servidor}] Procesando mensajes...")
         if not self._mensajes_en_espera:
-            print(f"[Servidor {self._nombre_servidor}] No hay mensajes en la cola.")
+            print(f"[Servidor {self._nombre_servidor}] No hay mensajes.")
             return
 
         while self._mensajes_en_espera:
@@ -128,3 +128,4 @@ class Usuario(IEnviador, IRecibidor, IListador):
 
     def iniciar_sesion(self, contraseña_ingresada: str) -> bool:
         return self._contraseña == contraseña_ingresada
+
