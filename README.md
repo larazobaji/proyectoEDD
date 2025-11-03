@@ -14,7 +14,7 @@ El desarrollo se centra en aplicar principios de encapsulamiento, modularizació
 
 ---
 
-## Estructura del Proyecto
+## Estructura de Archivos:
 
 | Archivo | ¿Para qué sirve? |
 |----------|--------------|
@@ -27,7 +27,7 @@ El desarrollo se centra en aplicar principios de encapsulamiento, modularizació
 
 ---
 
-## Estructuras de Datos Utilizadas
+## Estructuras del Proyecto:
 
 | Estructura | ¿Qué hace? |
 |-------------|-------------|
@@ -38,7 +38,7 @@ El desarrollo se centra en aplicar principios de encapsulamiento, modularizació
 
 ---
 
-## Ejecución del Proyecto
+## Ejecución del Proyecto:
 
 ### 1- Clonar el Repositorio
 ```bash
@@ -60,7 +60,7 @@ Desde la terminal podrás:
 - Mover correos entre carpetas.  
 - Buscar mensajes recursivamente por asunto o remitente.
 
-## Analisís de el programa:
+## ¿Comó funciona el Programa?
 
 | Tarea | Descripción |
 |------------|--------------|
@@ -72,6 +72,6 @@ Desde la terminal podrás:
 
 ---
 
-## Enlaces Importantes
+## Enlaces:
 - **Trello (Gestión del Proyecto):** https://trello.com/b/UAu9U4Hi
 - **Repositorio GitHub:** https://github.com/larazobaji/proyectoEDD
