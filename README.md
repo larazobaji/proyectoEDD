@@ -60,7 +60,7 @@ Desde la terminal podrás:
 - Mover correos entre carpetas.  
 - Buscar mensajes recursivamente por asunto o remitente.
 
-## ¿Comó funciona el Programa?
+## ¿Cómo funciona el Programa?
 
 | Tarea | Descripción |
 |------------|--------------|
