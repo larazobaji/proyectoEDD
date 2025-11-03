@@ -8,15 +8,15 @@
 
 ## Objetivo del Proyecto
 
-El objetivo principal es **diseñar e implementar un sistema de cliente de correo electrónico orientado a objetos en Python**, que permita simular el envío y recepción de mensajes entre usuarios y servidores.  
+El objetivo principal es diseñar e implementar un sistema de cliente de correo electrónico orientado a objetos en Python, que permita simular el envío y recepción de mensajes entre usuarios y servidores.  
 
-El desarrollo se centra en aplicar principios de **encapsulamiento, modularización y estructuras de datos avanzadas**, creando un sistema eficiente, extensible y fácil de mantener.
+El desarrollo se centra en aplicar principios de encapsulamiento, modularización y estructuras de datos avanzadas.
 
 ---
 
 ## Estructura del Proyecto
 
-| Archivo | Descripción |
+| Archivo | ¿Para qué sirve? |
 |----------|--------------|
 | **Clases.py** | Contiene las clases principales `ServidorCorreo` y `Usuario`. Gestionan usuarios, mensajes y la jerarquía de carpetas. |
 | **Objetos.py** | Define los objetos base del sistema: `Mensaje` y `Carpeta`. Incluye búsqueda recursiva y movimientos entre carpetas. |
@@ -29,7 +29,7 @@ El desarrollo se centra en aplicar principios de **encapsulamiento, modularizaci
 
 ## Estructuras de Datos Utilizadas
 
-| Estructura | Aplicación |
+| Estructura | ¿Qué hace? |
 |-------------|-------------|
 | **Árbol (Recursividad)** | Representa la jerarquía de carpetas y subcarpetas dentro de cada usuario. Permite búsquedas recursivas de mensajes. |
 | **Diccionarios** | Utilizados para registrar usuarios por email dentro del servidor y organizar subcarpetas por nombre. |
@@ -51,7 +51,7 @@ cd proyectoEDD
 python Main.py
 ```
 
-### 3- Interacción
+### 3- ¿Qué puedes hacer en la terminal?
 Desde la terminal podrás:
 - Crear y conectar servidores.  
 - Registrar usuarios.  
@@ -60,9 +60,9 @@ Desde la terminal podrás:
 - Mover correos entre carpetas.  
 - Buscar mensajes recursivamente por asunto o remitente.
 
-## Complejidad Temporal — Análisis Breve
+## Analisís de el programa:
 
-| Operación | Descripción |
+| Tarea | Descripción |
 |------------|--------------|
 | **Búsqueda recursiva de carpeta** | Recorre todas las subcarpetas hasta encontrar la coincidencia. |
 | **Búsqueda de mensaje** | Recorre todos los mensajes en cada carpeta y subcarpeta. |
