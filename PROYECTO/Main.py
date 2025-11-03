@@ -4,7 +4,7 @@ from modelos.objetos import Mensaje
 from algos.grafo import RedServidores
 
 def registrar_usuario_interactivo(id_usuario: int, servidor: ServidorCorreo) -> Usuario:
-    print(f"\n--- Registro de Usuario {id_usuario} ---")
+    print(f"\n    Registro de Usuario {id_usuario} ")
     while True:
         nombre = input("Ingrese su nombre: ").strip()
         if nombre:
@@ -45,7 +45,7 @@ def self_mover_mensaje(usuario: Usuario):
         print("Entrada inválida. Debe ingresar un número.")
 
 def self_buscar_mensaje(usuario: Usuario):
-    print("\n--- Búsqueda Recursiva ---")
+    print("\n    Búsqueda Recursiva    ")
     criterio = input("Ingrese asunto o remitente a buscar: ").strip()
     resultados = usuario.buscar_mensaje_recursivo(criterio)
     if resultados:
@@ -56,11 +56,11 @@ def self_buscar_mensaje(usuario: Usuario):
         print("No se encontraron mensajes con ese criterio.")
 
 if __name__ == "__main__":
-    print("--- Inicio del Sistema de Correo ---")
+    print("    Inicio del Sistema de Correo    ")
     red = RedServidores()
     servidores = {}
     while True:
-        print("\n--- Configuración de Servidores ---")
+        print("\n    Configuración de Servidores    ")
         print("1. Crear nuevo servidor")
         print("2. Conectar servidores")
         print("3. Listar servidores creados")
@@ -172,3 +172,4 @@ if __name__ == "__main__":
             print("Contraseña incorrecta.")
             if intentos == 3:
                 print("Demasiados intentos fallidos.")
+
