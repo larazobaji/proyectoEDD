@@ -62,13 +62,13 @@ Desde la terminal podrás:
 
 ## Complejidad Temporal — Análisis Breve
 
-| Operación | Complejidad | Descripción |
-|------------|--------------|--------------|
-| **Búsqueda recursiva de carpeta** | O(n) | Recorre todas las subcarpetas hasta encontrar la coincidencia. |
-| **Búsqueda de mensaje** | O(m + n) | Recorre todos los mensajes en cada carpeta y subcarpeta. |
-| **Encolado de mensajes urgentes** | O(log n) | Uso de `heapq` para mantener la prioridad. |
-| **Procesamiento de cola** | O(n log n)** | Desencolado y entrega de todos los mensajes pendientes. |
-| **BFS / DFS en grafo de servidores** | O(V + E)** | Recorrido completo de la red según el método elegido. |
+| Operación | Descripción |
+|------------|--------------|
+| **Búsqueda recursiva de carpeta** | Recorre todas las subcarpetas hasta encontrar la coincidencia. |
+| **Búsqueda de mensaje** | Recorre todos los mensajes en cada carpeta y subcarpeta. |
+| **Encolado de mensajes urgentes** | Uso de `heapq` para mantener la prioridad. |
+| **Procesamiento de cola** | Desencolado y entrega de todos los mensajes pendientes. |
+| **BFS / DFS en grafo de servidores** | Recorrido completo de la red según el método elegido. |
 
 ---
 
