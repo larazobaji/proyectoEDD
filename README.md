@@ -27,7 +27,7 @@ El desarrollo se centra en aplicar principios de **encapsulamiento, modularizaci
 
 ---
 
-## 🧠 Estructuras de Datos Utilizadas
+## Estructuras de Datos Utilizadas
 
 | Estructura | Aplicación |
 |-------------|-------------|
