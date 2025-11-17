@@ -117,8 +117,3 @@ python Main.py
 
 - **Tablero Trello:** https://trello.com/b/UAu9U4Hi  
 - **Repositorio GitHub:** https://github.com/larazobaji/proyectoEDD  
-
----
-
-## Estado del Proyecto
-Proyecto completo, integrado y documentado según los lineamientos de la cátedra.
