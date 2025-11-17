@@ -1,77 +1,124 @@
-# Cliente de Correo Electrónico — Grupo 29, Comisión 2
+# Cliente de Correo Electrónico — Proyecto Final  
+Grupo 29 — Comisión 2  
 
-**Integrantes:**  
+## Integrantes  
 - Mauricio Ramirez  
 - Lara Zobaji  
 
 ---
 
+## Descripción General
+
+Este proyecto implementa un cliente de correo electrónico orientado a objetos en Python, diseñado para simular el envío, recepción y organización de mensajes entre usuarios y servidores dentro de una red distribuida.  
+El sistema integra estructuras de datos avanzadas, recursividad, colas de prioridad, grafos y una interfaz de línea de comandos (CLI), cumpliendo los requerimientos solicitados para la entrega final.
+
+---
+
 ## Objetivo del Proyecto
 
-El objetivo principal es diseñar e implementar un sistema de cliente de correo electrónico orientado a objetos en Python, que permita simular el envío y recepción de mensajes entre usuarios y servidores.  
+El objetivo principal es desarrollar un sistema que permita:
 
-El desarrollo se centra en aplicar principios de encapsulamiento, modularización y estructuras de datos avanzadas.
-
----
-
-## Estructura de Archivos:
-
-| Archivo | ¿Para qué sirve? |
-|----------|--------------|
-| **Clases.py** | Contiene las clases principales `ServidorCorreo` y `Usuario`. Gestionan usuarios, mensajes y la jerarquía de carpetas. |
-| **Objetos.py** | Define los objetos base del sistema: `Mensaje` y `Carpeta`. Incluye búsqueda recursiva y movimientos entre carpetas. |
-| **Grafo.py** | Implementa la red de servidores (`RedServidores`) y los métodos BFS/DFS para simular el envío de correos entre nodos. |
-| **Interfaces.py** | Define las interfaces abstractas (`IEnviador`, `IRecibidor`, `IListador`) que garantizan coherencia entre clases. |
-| **Utilidades.py** | Contiene funciones auxiliares, como la validación de correos electrónicos. |
-| **Main.py** | Archivo principal que ejecuta la simulación interactiva del sistema. Permite crear servidores, usuarios y enviar correos. |
+- Gestionar usuarios, mensajes y carpetas mediante estructuras recursivas.  
+- Enviar mensajes a través de una red de servidores modelada como grafo.  
+- Manejar mensajes urgentes utilizando una cola de prioridad basada en heapq.  
+- Aplicar filtros automáticos mediante listas y diccionarios.  
+- Integrar todas las funcionalidades en una interfaz de consola interactiva.
 
 ---
 
-## Estructuras del Proyecto:
+## Estructura de Archivos del Proyecto
 
-| Estructura | ¿Qué hace? |
-|-------------|-------------|
-| **Árbol (Recursividad)** | Representa la jerarquía de carpetas y subcarpetas dentro de cada usuario. Permite búsquedas recursivas de mensajes. |
-| **Diccionarios** | Utilizados para registrar usuarios por email dentro del servidor y organizar subcarpetas por nombre. |
-| **Cola de Prioridades (`heapq`)** | Administra los mensajes en espera de envío, priorizando aquellos marcados como **urgentes**. |
-| **Grafo (BFS / DFS)** | Modela la conexión entre servidores, permitiendo simular el recorrido de un mensaje a través de la red. |
+| Archivo | Descripción |
+|--------|-------------|
+| **Clases.py** | Contiene ServidorCorreo y Usuario. Gestionan usuarios, mensajes y carpetas. |
+| **Objetos.py** | Define Mensaje y Carpeta, con funciones recursivas y de movimiento. |
+| **Grafo.py** | Implementa la red de servidores usando algoritmos BFS y DFS. |
+| **Interfaces.py** | Interfaces IEnviador, IRecibidor, IListador para mantener coherencia. |
+| **Utilidades.py** | Validación de correos y otras utilidades auxiliares. |
+| **Main.py** | Punto de entrada del sistema. Ejecuta la CLI. |
 
 ---
 
-## Ejecución del Proyecto:
+## Estructuras de Datos Utilizadas
 
-### 1- Clonar el Repositorio
+| Estructura | Función |
+|-----------|---------|
+| **Árbol Recursivo** | Modela la jerarquía de carpetas de cada usuario. |
+| **Diccionarios** | Registro de usuarios y subcarpetas. |
+| **Cola de Prioridad (heapq)** | Manejo eficiente de mensajes urgentes. |
+| **Grafo (BFS / DFS)** | Modelo de red de servidores y rutas de envío. |
+
+---
+
+## Funcionalidades Principales
+
+### Gestión de Mensajes
+- Enviar mensajes entre usuarios.  
+- Recibir mensajes.  
+- Búsqueda por remitente o asunto.  
+- Cambiar prioridad.  
+- Mover mensajes entre carpetas.  
+
+### Carpetas y Subcarpetas (Árbol Recursivo)
+- Creación de subcarpetas.  
+- Listado recursivo.  
+- Búsqueda recursiva de mensajes.  
+- Movimiento de mensajes entre carpetas.  
+
+### Cola de Mensajes Urgentes
+- Encolado mediante heapq.  
+- Extracción en orden según prioridad.  
+- Procesamiento de mensajes pendientes.  
+
+### Red de Servidores (Grafo)
+- Conexión entre servidores.  
+- Envío de mensajes mediante BFS o DFS.  
+- Simulación de rutas entre nodos.  
+
+---
+
+## Instalación y Ejecución
+
+### 1. Clonar el Repositorio
 ```bash
 git clone https://github.com/larazobaji/proyectoEDD.git
 cd proyectoEDD
 ```
 
-### 2- Ejecutar el Programa Principal
+### 2. Ejecutar el Programa Principal
 ```bash
 python Main.py
 ```
 
-### 3- ¿Qué puedes hacer en la terminal?
-Desde la terminal podrás:
+### 3. Funcionalidades Disponibles desde la Terminal
 - Crear y conectar servidores.  
 - Registrar usuarios.  
 - Iniciar sesión.  
-- Enviar mensajes (con BFS o DFS).  
-- Mover correos entre carpetas.  
-- Buscar mensajes recursivamente por asunto o remitente.
-
-## ¿Cómo funciona el Programa?
-
-| Tarea | Descripción |
-|------------|--------------|
-| **Búsqueda recursiva de carpeta** | Recorre todas las subcarpetas hasta encontrar la coincidencia. |
-| **Búsqueda de mensaje** | Recorre todos los mensajes en cada carpeta y subcarpeta. |
-| **Encolado de mensajes urgentes** | Uso de `heapq` para mantener la prioridad. |
-| **Procesamiento de cola** | Desencolado y entrega de todos los mensajes pendientes. |
-| **BFS / DFS en grafo de servidores** | Recorrido completo de la red según el método elegido. |
+- Enviar mensajes usando BFS o DFS.  
+- Organizar carpetas.  
+- Buscar mensajes recursivamente.  
+- Procesar mensajes urgentes.  
 
 ---
 
-## Enlaces:
-- **Trello (Gestión del Proyecto):** https://trello.com/b/UAu9U4Hi
-- **Repositorio GitHub:** https://github.com/larazobaji/proyectoEDD
+## Funcionamiento Interno del Sistema
+
+| Tarea | Descripción |
+|-------|-------------|
+| **Búsqueda de carpeta** | Recorrido recursivo de subcarpetas hasta encontrar coincidencia. |
+| **Búsqueda de mensaje** | Revisión de mensajes en todas las carpetas y subcarpetas. |
+| **Manejo de urgencias** | Uso de heapq para priorizar mensajes urgentes. |
+| **Procesamiento de cola** | Desencolado y entrega de mensajes pendientes. |
+| **Enrutamiento (BFS/DFS)** | Recorrido completo del grafo de servidores. |
+
+---
+
+## Enlaces del Proyecto
+
+- **Tablero Trello:** https://trello.com/b/UAu9U4Hi  
+- **Repositorio GitHub:** https://github.com/larazobaji/proyectoEDD  
+
+---
+
+## Estado del Proyecto
+Proyecto completo, integrado y documentado según los lineamientos de la cátedra.
