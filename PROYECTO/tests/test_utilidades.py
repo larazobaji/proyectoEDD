@@ -1,6 +1,4 @@
 import unittest
-
-# Ruta de importación corregida
 from util.utilidades import es_email_valido
 
 
@@ -21,3 +19,4 @@ class TestUtilidades(unittest.TestCase):
 
     def test_email_valido_vacio(self):
         self.assertFalse(es_email_valido(""))
+
