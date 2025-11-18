@@ -1,8 +1,6 @@
 import unittest
 from collections import deque
 from unittest.mock import MagicMock, patch
-
-# Ruta de importación corregida
 from grafos.grafo import RedServidores
 
 
@@ -81,3 +79,4 @@ class TestRedServidores(unittest.TestCase):
 
         self.assertIsNone(ruta)
         self.assertEqual(len(self.s_bsas.mensajes_recibidos), 0)
+
