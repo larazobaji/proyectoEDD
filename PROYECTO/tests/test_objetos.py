@@ -1,7 +1,5 @@
 import unittest
 from datetime import datetime
-
-# Ruta de importación corregida
 from modelos.objetos import Mensaje, Carpeta, TipoEtiqueta
 
 
@@ -81,3 +79,4 @@ class TestCarpeta(unittest.TestCase):
         moved = self.carpeta_raiz.mover_mensaje(self.mensaje1, carpeta_destino)
         self.assertTrue(moved)
         self.assertEqual(len(self.carpeta_raiz.mensajes), 0)
+
