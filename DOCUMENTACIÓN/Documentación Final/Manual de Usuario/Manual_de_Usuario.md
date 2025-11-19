@@ -36,10 +36,11 @@ Al ejecutar el programa aparece el menú inicial:
 
 ```
 === CLIENTE DE CORREO ELECTRÓNICO ===
-1. Administrar Servidores
-2. Registrar Usuario
-3. Iniciar Sesión
-0. Salir
+--- Configuración de Servidores---
+1. Crear nuevo servidor
+2. Conectar servidores
+3. Listar servidores creados
+4. Continuar al registro de usuarios
 ```
 
 ---
@@ -63,18 +64,19 @@ Muestra todas las conexiones establecidas.
 Se solicita:
 - Nombre  
 - Email válido  
-- Servidor donde será creado  
+- Contraseña  
 
 ### 6.2 Iniciar sesión
 Tras ingresar el email y servidor, aparece el menú del usuario:
 
 ```
-1. Enviar Mensaje
-2. Ver Bandeja de Entrada
-3. Carpetas
-4. Filtros
-5. Mensajes Urgentes
-0. Cerrar Sesión
+1. Enviar correo (BFS)
+2. Enviar correo (DFS)
+3. Revisar bandeja de entrada
+4. Mover mensaje
+5. Buscar mensaje
+6. Crear carpeta
+7. Cerrar sesión
 ```
 
 ---
@@ -84,8 +86,7 @@ El usuario debe ingresar:
 - Email del destinatario  
 - Asunto  
 - Cuerpo  
-- Prioridad (1–5)  
-- Método de envío (BFS o DFS)
+- Urgente (Si–No)  
 
 Si el destinatario está en otro servidor, el sistema buscará una ruta válida.
 
@@ -94,8 +95,6 @@ Si el destinatario está en otro servidor, el sistema buscará una ruta válida.
 ## 8. Bandeja de Entrada
 Aquí se muestran todos los mensajes recibidos, permitiendo:
 - Leer mensaje  
-- Marcar como leído  
-- Mover a carpetas  
 
 ---
 
@@ -144,4 +143,3 @@ El usuario debe crearlas desde el menú “Carpetas”.
 
 ## 13. Cierre de Sesión
 Volver al menú principal para cambiar de usuario o finalizar el programa.
-
