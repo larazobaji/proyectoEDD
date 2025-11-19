@@ -17,8 +17,7 @@ def registrar_usuario_interactivo(id_usuario: int, servidor: ServidorCorreo) -> 
         if es_email_valido(email):
             break
         else:
-            print(
-                "Mail incorrecto. Debe tener un solo '@' y ningún espacio. Intente de nuevo.")
+            print("Mail incorrecto. Debe tener un solo '@' y ningún espacio. Intente de nuevo.")
     contraseña = input("Ingrese una contraseña: ")
     usuario = Usuario(nombre, email, id_usuario, contraseña)
     servidor.registrar_usuario(usuario)
@@ -64,8 +63,8 @@ if __name__ == "__main__":
     print("--- Inicio del Sistema de Correo ---")
     red = RedServidores()
     servidores = {}
-A
-    while True:
+
+    while True:      #servidores
         print("\n--- Configuración de Servidores ---")
         print("1. Crear nuevo servidor")
         print("2. Conectar servidores")
@@ -139,19 +138,20 @@ A
         while intentos < 3:
             contraseña = input("Contraseña: ")
             if usuario_encontrado.iniciar_sesion(contraseña):
-                print(
-                    f"\n--- Sesión iniciada como {usuario_encontrado.obtener_email()} ---")
+                print(f"\n--- Sesión iniciada como {usuario_encontrado.obtener_email()} ---")
 
-                while True:
+                while True:            #menu principal de usuario
                     print("\n--- Menú ---")
                     print("1. Enviar correo (BFS)")
                     print("2. Enviar correo (DFS)")
                     print("3. Revisar bandeja de entrada")
                     print("4. Mover mensaje")
                     print("5. Buscar mensaje")
-                    print("6. Cerrar sesión")
+                    print("6. Crear carpeta")
+                    print("7. Cerrar sesión")
                     op = input("Opción: ")
 
+                    # ENVIAR CORREO
                     if op in ["1", "2"]:
                         metodo = "bfs" if op == "1" else "dfs"
                         destinatario = input("Email destinatario: ").strip()
@@ -159,54 +159,81 @@ A
                         cuerpo = input("Cuerpo: ")
                         urgente = input("¿Urgente? (si/no): ").lower() == "si"
 
-                        mensaje = usuario_encontrado.enviar_mensaje(
-                            destinatario, asunto, cuerpo, urgente
-                        )
+                        mensaje = usuario_encontrado.enviar_mensaje(destinatario, asunto, cuerpo, urgente)
 
-                        # *** FIX: el mensaje ahora pasa al servidor ***
-                        servidor_actual.encolar_mensaje(mensaje)
-                        servidor_actual.procesar_mensajes()
-
+                        # Detectar servidor origen y destino
                         servidor_origen = None
                         servidor_destino = None
+
                         for nombre, s in servidores.items():
                             if usuario_encontrado.obtener_email() in s._usuarios:
                                 servidor_origen = nombre
+
                             for user in s.obtener_usuarios():
                                 if user.obtener_email() == destinatario:
                                     servidor_destino = nombre
 
-                        if servidor_origen and servidor_destino:
-                            ruta = red.simular_envio(
-                                mensaje, servidor_origen, servidor_destino, metodo=metodo)
-                            if ruta:
-                                print("Mensaje transmitido por ruta:",
-                                      " -> ".join(ruta))
-                            else:
-                                print("No existe conexión entre los servidores.")
-                        else:
-                            print("Error al determinar servidores de envío.")
+                        if servidor_destino is None:
+                            print("El destinatario no existe en ningún servidor. Mensaje NO enviado.")
+                            continue
 
+                        if servidor_origen is None:
+                            print("Error interno: no se encontró servidor del remitente.")
+                            continue
+
+                        ruta = red.simular_envio(mensaje, servidor_origen, servidor_destino, metodo=metodo)
+
+                        if ruta:
+                            print("Mensaje transmitido por ruta:", " -> ".join(ruta))
+                        else:
+                            print("No existe conexión entre los servidores.")
+
+                    # LISTAR BANDEJA
                     elif op == "3":
                         usuario_encontrado.listar_bandeja_entrada()
 
+                    # MOVER MENSAJE
                     elif op == "4":
                         self_mover_mensaje(usuario_encontrado)
 
+                    # BUSCAR MENSAJE
                     elif op == "5":
                         self_buscar_mensaje(usuario_encontrado)
 
+                    # CREAR CARPETA
                     elif op == "6":
-                        print(
-                            "\nSesión cerrada. Volviendo al menú de inicio de sesión…")
+                        print("\n--- Crear carpeta ---")
+                        nombre = input("Nombre de la nueva carpeta: ").strip()
+
+                        if not nombre:
+                            print("El nombre no puede estar vacío.")
+                            continue
+
+                        print("¿Crear dentro de una carpeta existente?")
+                        print("1. Sí")
+                        print("2. No (crear en la raíz)")
+                        opcion_padre = input("> ")
+
+                        carpeta_padre = None
+                        if opcion_padre == "1":
+                            carpeta_padre = input("Nombre de la carpeta padre: ").strip()
+
+                        usuario_encontrado.crear_carpeta(nombre, carpeta_padre)
+                        print(f"Carpeta '{nombre}' creada exitosamente.")
+
+                    # CERRAR SESIÓN
+                    elif op == "7":
+                        print("\nSesión cerrada. Volviendo al inicio…")
                         break
 
                     else:
                         print("Opción no válida.")
 
-                break
+                break  
+
             else:
                 intentos += 1
                 print("Contraseña incorrecta.")
-                if intentos == 3:
-                    print("Demasiados intentos. Regresando al login.")
+
+            if intentos == 3:
+                print("Demasiados intentos fallidos.")
