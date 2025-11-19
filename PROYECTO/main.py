@@ -64,7 +64,7 @@ if __name__ == "__main__":
     red = RedServidores()
     servidores = {}
 
-    while True:
+    while True:   #servidores
         print("\n--- Configuración de Servidores ---")
         print("1. Crear nuevo servidor")
         print("2. Conectar servidores")
@@ -237,3 +237,4 @@ if __name__ == "__main__":
 
             if intentos == 3:
                 print("Demasiados intentos fallidos.")
+
