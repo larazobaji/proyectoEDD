@@ -311,3 +311,4 @@ if __name__ == "__main__":
 
             if intentos == 3:
                 print("Demasiados intentos fallidos.")
+                break
